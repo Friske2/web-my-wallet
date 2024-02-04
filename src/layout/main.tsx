@@ -2,7 +2,7 @@ import React from 'react';
 
 function MainLayout({ children }: { children: React.ReactNode }) {
   return (
-    <div className='container'>
+    <div className='container layout-container'>
       { children }
     </div>
   );
