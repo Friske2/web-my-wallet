@@ -1,6 +1,14 @@
 import React from 'react';
-import Circle from '../components/circle';
+import { useNavigate } from 'react-router'
+import ListWallet from '../components/listWallet';
 function PageHome() {
+  const history = useNavigate();
+  function toAddWallet() {
+    history('/wallet/add');
+  }
+  function toWalletDetail() {
+    history('/wallet/1');
+  }
   return (
     <div>
       <div>
@@ -12,15 +20,13 @@ function PageHome() {
       <h5>
         รายการกระป๋าเงิน
       </h5>
-      <div className='d-flex'>
-        <Circle />
-        <div className='my-1 mx-2'>
-          <div className='title'>ใช้จ่ายทั่วไป</div>
-          <div className='sub-title'>10,000 บาท</div>
-        </div>
+      <div className='line'>
       </div>
-      <div className="d-grid gap-2 my-2">
-        <button className='btn btn-primary'>+ add wallet</button>
+      <ListWallet handleClick={toWalletDetail} />
+      <div className='position-footer'>
+        <div className="d-grid gap-2 my-2">
+          <button onClick={toAddWallet} className='btn btn-primary'>+ Add wallet</button>
+        </div>
       </div>
     </div>
   );
