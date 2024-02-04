@@ -1,0 +1,19 @@
+[
+  {
+    "date": "2020-01-01",
+    "transections": [
+      {
+        "id": 1,
+        "amount": 5000,
+        "type": "DEPOSIT",
+        "name": "เงินเดือน"
+      },
+      {
+        "id": 2,
+        "amount": -500,
+        "type": "WITHDRAW",
+        "name": "ค่าไฟฟ้า"
+      }
+    ]
+  }
+]
