@@ -1,17 +1,31 @@
-import React from "react";
+// import { useEffect } from "react";
 import Circle from './circle';
-function ListWallet(props: any) {
-  function handleClick() {
-    props.handleClick();
+import { IWallet } from "../interface/IWallet";
+interface ListWalletProps {
+  items: IWallet[];
+  handleClick: (id:number) => void;
+}
+function ListWallet(props: ListWalletProps) {
+  function handleClick(id:number) {
+    props.handleClick(id);
   }
-  return (
-    <div className='d-flex' onClick={handleClick}>
-        <Circle />
-        <div className='my-1 mx-2'>
-          <div className='title'>ใช้จ่ายทั่วไป</div>
-          <div className='sub-title'>10,000 บาท</div>
-        </div>
-      </div>
+  if(props.items.length === 0) return (<div>ไม่มีข้อมูล</div>);
+  else return (
+    <div>
+      {
+         props.items.map((item) => {
+          return (
+          <div className='d-flex' key={item.id} onClick={()=> handleClick(item.id)}>
+              <Circle />
+              <div className='my-1 mx-2'>
+                <div className='title'>{ item.name}</div>
+                <div className='sub-title'>{item.balance} บาท</div>
+              </div>
+          </div>
+          )
+        })
+      }
+    </div>
   );
 }
 
